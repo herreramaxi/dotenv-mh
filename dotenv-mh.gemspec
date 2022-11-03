@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ["herreramaxi@gmail.com"]
 
   spec.summary = "dotenv gem for loading environment variables"
-  spec.description = "dotenv gem for loading environment variables from .env file. This is a WIP, I would like to add a Rails initializer so that env variables can be loaded from .env file."
+  spec.description = "dotenv gem for loading environment variables from .env file."
   spec.homepage = "https://github.com/herreramaxi/dotenv-mh"
   spec.required_ruby_version = ">= 2.6.0"
 
