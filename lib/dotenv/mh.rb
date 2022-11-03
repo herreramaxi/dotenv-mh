@@ -1,31 +1,27 @@
 # frozen_string_literal: true
 
 require_relative "mh/version"
+require_relative "railtie"
+require_relative "LoggerMh"
 
 module Dotenv
-  # module Mh
-    # class Dotenv
       def self.load()
 
         if(!File.file?('.env')) then
-          puts ".env file not found"
+          LoggerMh.logWarning(".env file not found")
           return
         end
 
-        puts "loading .env file..."
+        LoggerMh.logInfo("loading variables from .env file...")
         
-        File.readlines('.env').each do |line|
-          puts(line)
-
-          if(line.start_with?("#")) then
-            puts("skipping: line comment")
+        File.readlines('.env').each do |line|        
+          if(line.start_with?("#")) then           
             next
           end
                  
           keyValue = line.strip().split("=", 2)
 
           if(keyValue.length != 2) then
-            puts("skipping: wrong line detected")
             next     
           end
 
@@ -35,6 +31,4 @@ module Dotenv
           ENV[key] = value
         end
       end
-    # end
-  # end
 end

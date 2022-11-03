@@ -1,8 +1,7 @@
-# Dotenv::Mh
+# Dotenv-mh
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/dotenv/mh`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Dotenv-mh is a simple gem inspired on the classic [dotenv](https://github.com/motdotla/dotenv) and adapted to Rails framework following [figaro](https://github.com/laserlemon/figaro) approach for initialization (Rails::Railtie).
+Basically, it allows to load environment variables from a .env file when running on development. Once this gem is installed, your Rails application will automatically load your environment variables using a custom Rails::Railtie, so there is no need to modify the "config/application.rb".
 
 ## Installation
 
@@ -14,16 +13,23 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
     $ gem install dotenv-mh
 
-## Usage
+## Execute Installer
+Execute the following:
 
-TODO: Write usage instructions here
+    $ bundle exec dotenvInstaller  
 
-## Development
+The installer will create a ".env" file and add it to your .gitignore.
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## .env file
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+This follows the classic .env file structure, where each line represents a tuple of key-value.
+
+    # .env file
+    Variable1=value1
+    Variable2=value2
+    .....
+    AnotherVariable=AnotherValue
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/dotenv-mh.
+Bug reports and pull requests are welcome on GitHub at https://github.com/herreramaxi/dotenv-mh.
