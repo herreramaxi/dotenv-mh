@@ -1,21 +1,21 @@
 require "dotenv/loggerMh"
 
-LoggerMh.logInfo("installing...")
+Dotenv::LoggerMh.logInfo("installing...")
 
 if(!File.file?('.env')) then
-    LoggerMh.logInfo("creating .env file")
+    Dotenv::LoggerMh.logInfo("creating .env file")
     
     File.new(".env", "w")
 
     if(File.file?('.gitignore')) then 
-        LoggerMh.logInfo("adding .env into your .gitignore")
+        Dotenv::LoggerMh.logInfo("adding .env into your .gitignore")
 
         fileContent = File.read(".gitignore")
         File.write(".gitignore", fileContent + "\n.env")
     else
-        LoggerMh.logInfo("not able to add '.env' into your .gitignore, file does not exists...")      
+        Dotenv::LoggerMh.logInfo("not able to add '.env' into your .gitignore, file does not exists...")      
     end
 else
-    LoggerMh.logInfo(".env file already exists, skipping...")
+    Dotenv::LoggerMh.logInfo(".env file already exists, skipping...")
 end
 

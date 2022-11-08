@@ -1,34 +1,29 @@
 # frozen_string_literal: true
 
-require_relative "mh/version"
-require_relative "railtie"
-require_relative "LoggerMh"
+require_relative 'mh/version'
+require_relative 'railtie'
+require 'dotenv/loggerMh'
 
 module Dotenv
-      def self.load()
+  def self.load
+    unless File.file?('.env')
+      Dotenv::LoggerMh.logWarning('.env file not found')
+      return
+    end
 
-        if(!File.file?('.env')) then
-          LoggerMh.logWarning(".env file not found")
-          return
-        end
+    Dotenv::LoggerMh.logInfo('loading variables from .env file...')
 
-        LoggerMh.logInfo("loading variables from .env file...")
-        
-        File.readlines('.env').each do |line|        
-          if(line.start_with?("#")) then           
-            next
-          end
-                 
-          keyValue = line.strip().split("=", 2)
+    File.readlines('.env').each do |line|
+      next if line.start_with?('#')
 
-          if(keyValue.length != 2) then
-            next     
-          end
+      keyValue = line.strip.split('=', 2)
 
-          key = keyValue[0]
-          value = keyValue[1]
+      next if keyValue.length != 2
 
-          ENV[key] = value
-        end
-      end
+      key = keyValue[0]
+      value = keyValue[1]
+
+      ENV[key] = value
+    end
+  end
 end
